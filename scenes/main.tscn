@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy2iiipeqiaod"]
+[gd_scene load_steps=7 format=3 uid="uid://cy2iiipeqiaod"]
 
 [ext_resource type="Texture2D" uid="uid://t3dp2i3y1tj4" path="res://assets/Bg.png" id="1_0yhpc"]
 
@@ -7,6 +7,15 @@ size = Vector2(20, 140)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abvwr"]
 size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlwoc"]
+size = Vector2(1152, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffg1j"]
+size = Vector2(64, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlf53"]
+size = Vector2(64, 648)
 
 [node name="Main" type="Sprite2D"]
 texture_filter = 1
@@ -63,3 +72,25 @@ offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Borders" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Borders"]
+position = Vector2(576, -32)
+shape = SubResource("RectangleShape2D_hlwoc")
+
+[node name="Bottom" type="CollisionShape2D" parent="Borders"]
+position = Vector2(576, 680)
+shape = SubResource("RectangleShape2D_hlwoc")
+
+[node name="ScoreLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreLeft"]
+position = Vector2(-32, 324)
+shape = SubResource("RectangleShape2D_ffg1j")
+
+[node name="ScoreRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreRight"]
+position = Vector2(1184, 324)
+shape = SubResource("RectangleShape2D_qlf53")
