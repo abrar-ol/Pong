@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy2iiipeqiaod"]
+[gd_scene load_steps=12 format=3 uid="uid://cy2iiipeqiaod"]
 
 [ext_resource type="Texture2D" uid="uid://t3dp2i3y1tj4" path="res://assets/Bg.png" id="1_0yhpc"]
 [ext_resource type="FontFile" uid="uid://ky4vsdxca2cl" path="res://assets/pixel_font.ttf" id="2_ky6ed"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="2_ng2jo"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="3_yun1u"]
 [ext_resource type="Script" path="res://scripts/Ball.gd" id="4_pfnw0"]
+[ext_resource type="Script" path="res://scripts/CPU.gd" id="4_xnxbb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yv28g"]
 size = Vector2(20, 140)
@@ -46,6 +47,7 @@ shape = SubResource("RectangleShape2D_yv28g")
 
 [node name="CPU" type="StaticBody2D" parent="."]
 position = Vector2(1082, 342)
+script = ExtResource("4_xnxbb")
 
 [node name="ColorRect" type="ColorRect" parent="CPU"]
 anchors_preset = 4
@@ -135,4 +137,5 @@ autostart = true
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(576, 448)
 
+[connection signal="position_changed" from="Ball" to="CPU" method="_on_ball_position_changed"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]

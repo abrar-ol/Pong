@@ -7,6 +7,8 @@ const START_SPEED = 500
 const ACCEL = 50
 const limit_point = 200
 
+signal position_changed(new_value)
+
 
 func _ready():
 	win_size = get_viewport_rect().size
@@ -25,3 +27,4 @@ func random_direction():
 
 func _physics_process(delta):
 	move_and_collide(speed*delta*direction)
+	position_changed.emit(position)
