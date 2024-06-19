@@ -13,7 +13,7 @@ func _ready():
 func _physics_process(delta):
 	dist =position.y - ball_position.y 
 	
-	if abs(dist)>get_parent().PADEL_SPEED * delta :
+	if abs(dist) > get_parent().PADEL_SPEED * delta :
 		move_by = get_parent().PADEL_SPEED * delta * sign(dist)
 	else:
 		move_by=dist

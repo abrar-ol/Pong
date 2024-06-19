@@ -6,5 +6,4 @@ var PADEL_SPEED := 500
 
 
 func _on_ball_timer_timeout():
-	print("start the game")
 	$Ball.new_ball()

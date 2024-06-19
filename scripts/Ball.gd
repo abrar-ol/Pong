@@ -26,5 +26,12 @@ func random_direction():
 	return new_dir
 
 func _physics_process(delta):
-	move_and_collide(speed*delta*direction)
+	var collision = move_and_collide(speed*delta*direction)
+	var collider
+	if collision:
+		collider = collision.get_collider()
+		direction = direction.bounce(collision.get_normal())
+		if collider == $"../Player" or collider.name == "CPU" :
+			speed += ACCEL
+			
 	position_changed.emit(position)

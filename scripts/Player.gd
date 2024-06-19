@@ -10,7 +10,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("ui_down"):
 		position.y += get_parent().PADEL_SPEED * delta
-		print(win_height)
 	if Input.is_action_pressed("ui_up"):
 		position.y -= get_parent().PADEL_SPEED * delta
 		
