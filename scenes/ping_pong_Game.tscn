@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://t3dp2i3y1tj4" path="res://assets/Bg.png" id="1_0yhpc"]
 [ext_resource type="FontFile" uid="uid://ky4vsdxca2cl" path="res://assets/pixel_font.ttf" id="2_ky6ed"]
-[ext_resource type="Script" path="res://scripts/main.gd" id="2_ng2jo"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="2_ng2jo"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="3_yun1u"]
 [ext_resource type="Script" path="res://scripts/Ball.gd" id="4_pfnw0"]
 [ext_resource type="Script" path="res://scripts/CPU.gd" id="4_xnxbb"]
@@ -22,7 +22,7 @@ size = Vector2(64, 648)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlf53"]
 size = Vector2(64, 648)
 
-[node name="Main" type="Sprite2D"]
+[node name="PingPongGame" type="Sprite2D"]
 texture_filter = 1
 texture = ExtResource("1_0yhpc")
 centered = false
@@ -138,4 +138,6 @@ autostart = true
 position = Vector2(576, 448)
 
 [connection signal="position_changed" from="Ball" to="CPU" method="_on_ball_position_changed"]
+[connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
+[connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]

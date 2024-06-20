@@ -6,6 +6,7 @@ var speed : int
 const START_SPEED = 500
 const ACCEL = 50
 const limit_point = 200
+const MAX_Y_VECTOR:float = 0.6 
 
 signal position_changed(new_value)
 
@@ -25,13 +26,29 @@ func random_direction():
 	new_dir.y = randf_range(-1,1)
 	return new_dir
 
+func new_direction(collider):
+	var ball_y = position.y
+	var pad_y = collider.position.y
+	var dist = ball_y - pad_y
+	var new_dir := Vector2()
+	
+	if direction.x > 0:
+		new_dir.x = -1
+	else:
+		new_dir.x = 1
+	new_dir.y = (dist/(collider.p_height/2)) * MAX_Y_VECTOR
+	return new_dir.normalized()
+
 func _physics_process(delta):
 	var collision = move_and_collide(speed*delta*direction)
 	var collider
 	if collision:
 		collider = collision.get_collider()
-		direction = direction.bounce(collision.get_normal())
 		if collider == $"../Player" or collider.name == "CPU" :
 			speed += ACCEL
+			direction = new_direction(collider)
+		else:
+			direction = direction.bounce(collision.get_normal())
+			
 			
 	position_changed.emit(position)
