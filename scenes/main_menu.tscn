@@ -1,6 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://lugf77cavgrm"]
+[gd_scene load_steps=10 format=3 uid="uid://lugf77cavgrm"]
 
 [ext_resource type="FontFile" uid="uid://v3d1jvie7oky" path="res://assets/fonts/HennyPenny-Regular.ttf" id="1_mawpl"]
+
+[sub_resource type="Gradient" id="Gradient_towx3"]
+colors = PackedColorArray(0.694118, 0.898039, 0.94902, 1, 0.152941, 0.14902, 0.207843, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sinif"]
+gradient = SubResource("Gradient_towx3")
+fill = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_77h0p"]
 particle_flag_disable_z = true
@@ -28,12 +35,18 @@ scale_max = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.627451, 0.168627, 1, 1)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_sinif")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(888, 0)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_77h0p")
@@ -66,7 +79,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.92549, 0.886275, 0.815686, 1)
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.917647, 1)
 theme_override_fonts/font = ExtResource("1_mawpl")
 theme_override_font_sizes/font_size = 90
 text = "Games Zone"
@@ -81,6 +94,8 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.607843, 1)
+theme_override_colors/font_hover_color = Color(0.65098, 0.65098, 0.658824, 1)
 theme_override_fonts/font = ExtResource("1_mawpl")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1tkx")
@@ -94,6 +109,8 @@ text = "Ping Pong"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.607843, 1)
+theme_override_colors/font_hover_color = Color(0.65098, 0.65098, 0.658824, 1)
 theme_override_fonts/font = ExtResource("1_mawpl")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1tkx")
@@ -108,6 +125,8 @@ text = "Game 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/font_pressed_color = Color(0.60045, 0.600449, 0.60866, 1)
+theme_override_colors/font_hover_color = Color(0.65098, 0.65098, 0.658824, 1)
 theme_override_fonts/font = ExtResource("1_mawpl")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1tkx")
